@@ -1,24 +1,23 @@
-import express from "express";
-import cors from "cors";
+import express from 'express';
+import cors from 'cors';
+import { TransactionSDK } from './services/TransactionSDK';
 
 const app = express();
 app.use(cors());
 
-import transactions from "./data.json";
-// import transactions from "./datav2.json";
 
-app.get("/api/transactions", (req, res) => {
-  res.json(transactions["payment_transactions"]);
+const transactionSDK = new TransactionSDK("v2");
+
+app.get('/api/transactions', (req, res) => {
+  res.json(transactionSDK.getAllTransactions());
 });
 
-app.get("/api/transactions/:unique_id", (req, res) => {
-  const transaction = transactions["payment_transactions"].find(
-    (t) => t.unique_id === req.params.unique_id
-  );
+app.get('/api/transactions/:unique_id', (req, res) => {
+  const transaction = transactionSDK.getTransactionById(req.params.unique_id);
   if (transaction) {
     res.json(transaction);
   } else {
-    res.status(404).send({ error: "Transaction not found" });
+    res.status(404).send({ error: 'Transaction not found' });
   }
 });
 

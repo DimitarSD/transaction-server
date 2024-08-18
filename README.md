@@ -18,30 +18,29 @@
    npm install
    ```
 
-3. **Choose the Data Source:**
+3. **Choose Transaction Data Version**
 
-   This project includes two versions of `data.json` files:
-
-   - `data.json` with 5 records: This is the original dataset provided in the project requirements.
-   - `datav2.json` with 15 records: This is an extended version that adds 10 more records offering more variety and data.
-
-   By default, the server uses `datav2.json`. If you want to switch to `data.json`, follow these steps:
-
-   1. Open the `index.ts` file
-   2. Comment or uncomment the appropriate lines:
+   The server uses an SDK to access transaction data. You can choose between two versions of the data by setting the argument passed to the `TransactionSDK` constructor:
 
    ```javascript
-   import transactions from "./data.json";
-   // import transactions from "./datav2.json"; // Default
+   const transactionSDK = new TransactionSDK("v2"); // Uses datav2.json with more records and variety
    ```
 
-   3. After making your changes, **rebuild the project** to ensure the server uses the correct data source:
+   To switch to the original data with fewer records, change `"v2"` to `"v1"`:
+
+   ```javascript
+   const transactionSDK = new TransactionSDK("v1"); // Uses data.json with 5 records
+   ```
+
+   **Note**: If you switch between `v1` and `v2`, you need to restart the server for the changes to take effect.
+
+4. After making your changes, **rebuild the project** to ensure the server uses the correct data source:
 
    ```bash
    npm run build
    ```
 
-   4. Start the server:
+5. Start the server:
 
    ```bash
    npm start
