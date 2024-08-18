@@ -4,14 +4,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TransactionSDK = void 0;
-const data_json_1 = __importDefault(require("./../data.json"));
-const datav2_json_1 = __importDefault(require("./../datav2.json"));
+const data_json_1 = __importDefault(require("./../data/data.json"));
+const data_v2_json_1 = __importDefault(require("./../data/data-v2.json"));
 class TransactionSDK {
     constructor(version) {
         this.transactions =
             version === "v1"
                 ? data_json_1.default.payment_transactions
-                : datav2_json_1.default.payment_transactions;
+                : data_v2_json_1.default.payment_transactions;
     }
     getAllTransactions() {
         return this.transactions;

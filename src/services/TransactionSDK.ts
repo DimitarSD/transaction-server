@@ -1,5 +1,5 @@
-import transactionsDataV1 from "./../data.json";
-import transactionsDataV2 from "./../datav2.json";
+import transactionsDataV1 from "./../data/data.json";
+import transactionsDataV2 from "./../data/data-v2.json";
 
 export class TransactionSDK {
   private transactions: any[];

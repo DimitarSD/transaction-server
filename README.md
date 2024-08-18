@@ -20,10 +20,10 @@
 
 3. **Choose Transaction Data Version**
 
-   The server uses an SDK to access transaction data. You can choose between two versions of the data by setting the argument passed to the `TransactionSDK` constructor:
+   The server uses an SDK to access transaction data. You can choose between two versions of the data by setting the argument passed to the `TransactionSDK` constructor (see `src/routes/routes.ts`):
 
    ```javascript
-   const transactionSDK = new TransactionSDK("v2"); // Uses datav2.json with more records and variety
+   const transactionSDK = new TransactionSDK("v2"); // Uses data-v2.json with more records and variety
    ```
 
    To switch to the original data with fewer records, change `"v2"` to `"v1"`:
